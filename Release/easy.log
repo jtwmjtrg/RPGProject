@@ -1,0 +1,72 @@
+﻿  Battle.cpp
+  Camera.cpp
+  Effect3D.cpp
+Effect3D.cpp(26): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(119): note: 'strcpy' の宣言を確認してください
+Effect3D.cpp(55): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(119): note: 'strcpy' の宣言を確認してください
+Effect3D.cpp(728): warning C4838: 'DWORD' から 'int' への変換には縮小変換が必要です
+Effect3D.cpp(894): warning C4838: 'DWORD' から 'int' への変換には縮小変換が必要です
+Effect3D.cpp(948): warning C4838: 'DWORD' から 'int' への変換には縮小変換が必要です
+Effect3D.cpp(1115): warning C4838: 'unsigned int' から 'int' への変換には縮小変換が必要です
+Effect3D.cpp(1165): warning C4838: 'DWORD' から 'int' への変換には縮小変換が必要です
+Effect3D.cpp(1214): warning C4838: 'DWORD' から 'int' への変換には縮小変換が必要です
+Effect3D.cpp(1264): warning C4838: 'DWORD' から 'int' への変換には縮小変換が必要です
+  Emote.cpp
+Emote.cpp(61): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
+Emote.cpp(123): warning C4018: '>=': signed と unsigned の数値を比較しようとしました。
+  Enemy.cpp
+  Equipment.cpp
+  Game.cpp
+  GameClear.cpp
+  GameOver.cpp
+  ModeTerm.cpp
+  Shop.cpp
+  Skill.cpp
+  Character.cpp
+  direct3d.cpp
+  directxtext.cpp
+  Field.cpp
+Field.cpp(5): warning C4356: 'Game::mapData': 静的データ メンバーは派生クラスを使って初期化できません。
+Field.cpp(689): warning C4800: 'int': ブール値を 'true' または 'false' に強制的に設定します (警告の処理)
+Field.cpp(782): warning C4800: 'int': ブール値を 'true' または 'false' に強制的に設定します (警告の処理)
+Field.cpp(785): warning C4800: 'int': ブール値を 'true' または 'false' に強制的に設定します (警告の処理)
+  graphicdata.cpp
+  Item.cpp
+Item.cpp(83): warning C4018: '<=': signed と unsigned の数値を比較しようとしました。
+  main.cpp
+main.cpp(79): warning C4302: '型キャスト': 'LPSTR' から 'WORD' へ切り詰めます。
+main.cpp(80): warning C4302: '型キャスト': 'LPSTR' から 'WORD' へ切り詰めます。
+main.cpp(133): warning C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\time.h(505): note: 'localtime' の宣言を確認してください
+main.cpp(159): warning C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\time.h(505): note: 'localtime' の宣言を確認してください
+  Manager.cpp
+  コンパイル中...
+  MapObject.cpp
+  Opening.cpp
+  Player.cpp
+  Scene.cpp
+  SkillTree.cpp
+SkillTree.cpp(823): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+SkillTree.cpp(824): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+SkillTree.cpp(825): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+  sounddata.cpp
+  sprite.cpp
+sprite.cpp(70): warning C4838: 'int' から 'float' への変換には縮小変換が必要です
+sprite.cpp(70): warning C4244: '初期化中': 'int' から 'float' への変換です。データが失われる可能性があります。
+sprite.cpp(88): warning C4838: 'int' から 'float' への変換には縮小変換が必要です
+sprite.cpp(88): warning C4244: '初期化中': 'int' から 'float' への変換です。データが失われる可能性があります。
+sprite.cpp(105): warning C4838: 'int' から 'float' への変換には縮小変換が必要です
+sprite.cpp(105): warning C4244: '初期化中': 'int' から 'float' への変換です。データが失われる可能性があります。
+  Stage.cpp
+  TermSkill.cpp
+  TextBox.cpp
+  texture.cpp
+  Title.cpp
+  コード生成しています。
+  2768 of 6026 functions (45.9%) were compiled, the rest were copied from previous compilation.
+    1744 functions were new in current compilation
+    542 functions had inline decision re-evaluated but remain unchanged
+  コード生成が終了しました。
+  easy.vcxproj -> C:\Users\jtwmjtrg\Desktop\RolePlayingGame\RPGproject\Release\easy.exe

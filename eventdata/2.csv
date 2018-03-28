@@ -1,0 +1,10 @@
+0,FIRST,EMOTE,2,960,444,WAIT_CAM,30,MOVE_CAM,-448,-192,WAIT_CAM,120,MOVE_CAM,0,-448,SPEAK,・ケータ,装備がボロボロだな,新しい装備を買おう,SPEAK_END,SPEAK,・チュートリアル,よろずやでは様々な物が売り買いできます。,SPEAK_END,END,,,,,,,,,,,,,,,,,,,,,,,,
+1,TALK,5,SPEAK,・よろずやさん,ここはよろずやだよ,SPEAK_END,END,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+2,FINISH,2,1,FINISH_END,SPEAK,・チュートリアル,買い物が済んだら村の人から話を聞いて回りましょう,SPEAK_END,END,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+3,TALK,4,END,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+4,FINISH,2,2,2,3,FINISH_END,END,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+5,FINISH,2,4,FINISH_END,TALK,4,WARP_UNIT,18,960,2364,APPEAR_UNIT,18,1,MOVE_UNIT,18,960,444,DIRECTION,1,EMOTE,2,960,444,WAIT_CAM,30,END,,,,,,,,,,,,,,,,,,,,,,,
+6,FINISH,2,5,FINISH_END,SPEAK,・？？？,旅人さん！,SPEAK_END,SPEAK,・ティー,私はティー。,北の森に行くなら一緒に連れてって！,SPEAK_END,SPEAK,・ティー,危ないって？,道もわからない旅人さんが,一人で行くほうが危ないと思うな。,SPEAK_END,SPEAK,・ティー,いいでしょ？お願い！,SPEAK_END,SPEAK,・村人,確かにティーはあの森に詳しい,旅人さんさえよければ連れて行ってください。,SPEAK_END,SPEAK,ティーがパーティーに加わった,SPEAK_END,SPEAK,・ティー,明日の朝、出発しましょう！,SPEAK_END,JOIN_CHARACTER,tee,0,MOVE_CAM,512,-192,SPEAK,・チュートリアル,宿に泊まって朝を待ちましょう,SPEAK_END,APPEAR_UNIT,18,0,END
+7,FINISH,2,6,FINISH_END,TALK,7,END,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+8,FINISH,2,7,FINISH_END,END,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+9,FINISH,2,8,FINISH_END,SPEAK,・チュートリアル,北の森に向かいましょう,SPEAK_END,END,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

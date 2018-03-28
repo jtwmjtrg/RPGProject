@@ -1,0 +1,64 @@
+﻿  wave.cpp
+  Title.cpp
+c:\users\jtwmjtrg\desktop\roleplayinggame\tgs\equipment.h(7): fatal error C1083: include ファイルを開けません。'boost/lexical_cast.hpp':No such file or directory
+  texture.cpp
+  TextBox.cpp
+c:\users\jtwmjtrg\desktop\roleplayinggame\tgs\textbox.cpp(90): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+  TermSkill.cpp
+c:\users\jtwmjtrg\desktop\roleplayinggame\tgs\skill.h(8): fatal error C1083: include ファイルを開けません。'boost/lexical_cast.hpp':No such file or directory
+  Stage.cpp
+c:\users\jtwmjtrg\desktop\roleplayinggame\tgs\equipment.h(7): fatal error C1083: include ファイルを開けません。'boost/lexical_cast.hpp':No such file or directory
+  sprite.cpp
+c:\users\jtwmjtrg\desktop\roleplayinggame\tgs\sprite.cpp(70): warning C4838: 'int' から 'float' への変換には縮小変換が必要です
+c:\users\jtwmjtrg\desktop\roleplayinggame\tgs\sprite.cpp(70): warning C4244: '初期化中': 'int' から 'float' への変換です。データが失われる可能性があります。
+c:\users\jtwmjtrg\desktop\roleplayinggame\tgs\sprite.cpp(88): warning C4838: 'int' から 'float' への変換には縮小変換が必要です
+c:\users\jtwmjtrg\desktop\roleplayinggame\tgs\sprite.cpp(88): warning C4244: '初期化中': 'int' から 'float' への変換です。データが失われる可能性があります。
+  sounddata.cpp
+c:\users\jtwmjtrg\desktop\roleplayinggame\tgs\sounddata.cpp(21): warning C4267: '引数': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+c:\users\jtwmjtrg\desktop\roleplayinggame\tgs\sounddata.cpp(30): warning C4267: 'return': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+c:\users\jtwmjtrg\desktop\roleplayinggame\tgs\sounddata.cpp(45): warning C4267: '初期化中': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+c:\users\jtwmjtrg\desktop\roleplayinggame\tgs\sounddata.cpp(58): warning C4267: '初期化中': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+c:\users\jtwmjtrg\desktop\roleplayinggame\tgs\sounddata.cpp(62): warning C4267: '初期化中': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+  soundbuffer.cpp
+  Scene.cpp
+  Player.cpp
+c:\users\jtwmjtrg\desktop\roleplayinggame\tgs\equipment.h(7): fatal error C1083: include ファイルを開けません。'boost/lexical_cast.hpp':No such file or directory
+  Opening.cpp
+  MapObject.cpp
+c:\users\jtwmjtrg\desktop\roleplayinggame\tgs\equipment.h(7): fatal error C1083: include ファイルを開けません。'boost/lexical_cast.hpp':No such file or directory
+  Manager.cpp
+c:\users\jtwmjtrg\desktop\roleplayinggame\tgs\equipment.h(7): fatal error C1083: include ファイルを開けません。'boost/lexical_cast.hpp':No such file or directory
+  main.cpp
+c:\users\jtwmjtrg\desktop\roleplayinggame\tgs\equipment.h(7): fatal error C1083: include ファイルを開けません。'boost/lexical_cast.hpp':No such file or directory
+  Item.cpp
+c:\users\jtwmjtrg\desktop\roleplayinggame\tgs\equipment.h(7): fatal error C1083: include ファイルを開けません。'boost/lexical_cast.hpp':No such file or directory
+  Input.cpp
+  graphicdata.cpp
+c:\users\jtwmjtrg\desktop\roleplayinggame\tgs\graphicdata.cpp(53): warning C4267: '初期化中': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+c:\users\jtwmjtrg\desktop\roleplayinggame\tgs\graphicdata.cpp(87): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+c:\users\jtwmjtrg\desktop\roleplayinggame\tgs\graphicdata.cpp(145): warning C4267: '初期化中': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+c:\users\jtwmjtrg\desktop\roleplayinggame\tgs\graphicdata.cpp(181): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+  Field.cpp
+c:\users\jtwmjtrg\desktop\roleplayinggame\tgs\equipment.h(7): fatal error C1083: include ファイルを開けません。'boost/lexical_cast.hpp':No such file or directory
+  directxtext.cpp
+  コードを生成中...
+  コンパイル中...
+  directsound.cpp
+  direct3d.cpp
+  Character.cpp
+c:\users\jtwmjtrg\desktop\roleplayinggame\tgs\equipment.h(7): fatal error C1083: include ファイルを開けません。'boost/lexical_cast.hpp':No such file or directory
+  Skill.cpp
+c:\users\jtwmjtrg\desktop\roleplayinggame\tgs\skill.h(8): fatal error C1083: include ファイルを開けません。'boost/lexical_cast.hpp':No such file or directory
+  Shop.cpp
+c:\users\jtwmjtrg\desktop\roleplayinggame\tgs\equipment.h(7): fatal error C1083: include ファイルを開けません。'boost/lexical_cast.hpp':No such file or directory
+  ModeTerm.cpp
+c:\users\jtwmjtrg\desktop\roleplayinggame\tgs\skill.h(8): fatal error C1083: include ファイルを開けません。'boost/lexical_cast.hpp':No such file or directory
+  Game.cpp
+c:\users\jtwmjtrg\desktop\roleplayinggame\tgs\equipment.h(7): fatal error C1083: include ファイルを開けません。'boost/lexical_cast.hpp':No such file or directory
+  Equipment.cpp
+c:\users\jtwmjtrg\desktop\roleplayinggame\tgs\equipment.h(7): fatal error C1083: include ファイルを開けません。'boost/lexical_cast.hpp':No such file or directory
+  Enemy.cpp
+c:\users\jtwmjtrg\desktop\roleplayinggame\tgs\equipment.h(7): fatal error C1083: include ファイルを開けません。'boost/lexical_cast.hpp':No such file or directory
+  Battle.cpp
+c:\users\jtwmjtrg\desktop\roleplayinggame\tgs\equipment.h(7): fatal error C1083: include ファイルを開けません。'boost/lexical_cast.hpp':No such file or directory
+  コードを生成中...
