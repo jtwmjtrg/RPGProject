@@ -27,7 +27,7 @@ enum class eUnit_Act {
 	Recovery,	// 回復
 	Item,		// アイテム取得
 	Shop,		// 店
-	Existence,	// 消滅-出現
+	Existence,	// 消滅-出現	「欠番」
 	ChangeMode,	// モード変更
 	Message,	// メッセージ発信
 	SelectBranch,// 選択分岐
@@ -194,6 +194,7 @@ public:
 };
 
 // 【消滅-出現】
+/*
 class MapUnit_Action_Existence : public MapUnit_Action {
 private:
 	bool flag;		// true::出現	false:消滅
@@ -208,7 +209,7 @@ public:
 	// オーバーライド
 	eMUAReturn Execution();	// 挙動の実行
 };
-
+*/
 // 【モード変更】
 class MapUnit_Action_ChangeMode : public MapUnit_Action {
 private:
@@ -473,16 +474,21 @@ public:
 
 enum class eUnitMode {
 	None,		// 条件なし
+	Chapter,	// ストーリー進行度
+	EventFlag,	// イベントフラグ
 };
 
 // 【モードの移行条件スーパークラス】
 class MapUnit_Mode {
 protected:
+	const bool collisionFlag;		// 当たり判定
+	const bool appearFlag;		// 出現フラグ
+
 	vector<MapUnit_If*> terms;	// 挙動の実行条件
 	int termNum;				// 実行中の条件の要素番号
 	MapUnit_Move* move;			// 移動クラス
 
-	MapUnit_Mode();
+	MapUnit_Mode(const bool collisionFlag, const bool appearFlag);
 public:
 	virtual ~MapUnit_Mode() {}
 	eUnitMode type;		// 移行条件の種類
@@ -499,6 +505,9 @@ public:
 	void SetMove(MapUnit_Move* data);		// 移動クラスのセッター
 
 	void EndProcess();	// 終了処理
+
+	bool GetAppearFlag() { return appearFlag; }			// 出現フラグ
+	bool GetCollisionFlag() { return collisionFlag; }	// 当たり判定
 };
 
 // 【条件なし】
@@ -507,7 +516,7 @@ private:
 	const int modeNum;		// 自分のモード番号
 	const int& nowMode;		// 現在のモード
 public:
-	MapUnit_Mode_None(int modeNum, int& nowMode);
+	MapUnit_Mode_None(int modeNum, int& nowMode, const bool collisionFlag, const bool appearFlag);
 	~MapUnit_Mode_None();
 
 	bool ModeCheck();	// モードの移行条件判定
@@ -519,8 +528,22 @@ private:
 	int term;		// 条件（0:のとき	1:以外のとき	2:以前		3:以降）
 	
 public:
-	MapUnit_Mode_Chapter(string line);
+	MapUnit_Mode_Chapter(string line, const bool collisionFlag, const bool appearFlag);
 	~MapUnit_Mode_Chapter();
+
+
+	bool ModeCheck();	// モードの移行条件判定
+};
+// 【イベントフラグ】
+class MapUnit_Mode_EventFlag : public MapUnit_Mode {
+private:
+	int stageID;	// マップID
+	int eventID;	// イベントID
+	bool Flag;		// フラグ
+
+public:
+	MapUnit_Mode_EventFlag(string line, const bool collisionFlag, const bool appearFlag);
+	~MapUnit_Mode_EventFlag();
 
 
 	bool ModeCheck();	// モードの移行条件判定
@@ -538,10 +561,8 @@ protected:
 	int		id;		// ID
 	string	name;	// 名前
 	int		initX;	// 初期座標
-	int		initY;		
+	int		initY;	
 	int		imgID;	// 画像ID
-	bool	collisionFlag;	// 当たり判定
-	bool	appearFlag;		// 出現フラグ
 	Direction dir;	// 移動方向
 
 	int		img;	// 画像データ
@@ -561,19 +582,17 @@ public:
 	// ゲッター
 	int GetImg() { return img; }	// 画像の管理番号を返す
 	int GetID() { return id; }		// IDを返す
-	bool GetAppearFlag() { return appearFlag; }			// 出現フラグ
-	bool GetCollisionFlag(){ return collisionFlag; }	// 当たり判定
+	virtual bool GetAppearFlag() = 0;			// 出現フラグ
+	virtual bool GetCollisionFlag() = 0;		// 当たり判定
 
 	// セッター
-	void ChangeStatus(eUnitStatus type);	// 表示状態と当たり判定の有無を決定する
+	//void ChangeStatus(eUnitStatus type);	// 表示状態と当たり判定の有無を決定する
 	void SetDir(Direction dir);		// 移動方向)
 
 	// メッセージ関係
-	static void MessageUpDate();					// メッセージ更新処理
+	static void MessageUpDate();			// メッセージ更新処理
 	static vector<int> messageData;			// メッセージのデータ（1フレーム前に呼ばれたもの）
 	static vector<int> messageData_Stack;	// メッセージのデータ（現フレームに呼ばれたもの）
-
-	void SetAppearFlag(bool isAppear) { appearFlag = isAppear; }	// フラグのせったー
 };
 
 /*-------------------------------------------------ユニットデータ--------------------------------------------*/
@@ -604,10 +623,13 @@ public:
 	bool ActionExecution();	// 行動実行
 	void PosCorrection();	// 座標修正
 
-	void SetMode(int modeNum);	// モードのセッター
-	int GetMode();				// モードのゲッター
+	// 【セッター】
+	void SetMode(int modeNum);				// モード
+	void SetArea(int areaX, int areaY);		// 区分け座標
 
-	void SetArea(int areaX, int areaY);		// 区分け座標のセッター
-
+	// 【ゲッター】
+	int GetMode();					// モード
+	bool GetAppearFlag();			// 出現フラグ
+	bool GetCollisionFlag();		// 当たり判定
 	void EndProcess();	// 終了処理
 };

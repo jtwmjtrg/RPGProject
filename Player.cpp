@@ -1,5 +1,7 @@
 #include "Player.h"
 #include "SkillTree.h"
+#include "MapObject.h"
+#include "Game.h"
 
 bool					Player::saveFlag	= false;// セーブフラグ（セーブしたフレームにのみtrueになる）
 bool					Player::born		= false;// 生成は一回のみ
@@ -30,6 +32,9 @@ ItemBox					Player::decideMenu;			// 確認メニュー
 int						Player::menuY;				// 大事な座標
 int						Player::cover_handle_;		// 半透明な黒
 
+// 一時セーブデータ
+map<int, map<int, int>> Player::tmpSave_unitMode;	// ユニットのモード	<マップID <ユニットID , モード>>
+
 // debug
 int						Player::emote_lock_;		// エモート連投禁止
 
@@ -52,7 +57,7 @@ void Player::InitPlayer(bool isContinue) {
 	if (isContinue) {
 		// -------------------------------------------------------
 		// ファイルオープン
-		ifstream ifs("savedata.txt");
+		ifstream ifs("savedata\\savedata.txt");
 		// セーブデータがないとき
 		if (!ifs) {
 			chapter = 0;
@@ -109,11 +114,11 @@ void Player::InitPlayer(bool isContinue) {
 		else {
 			// 制御系
 			int loop = 0;	// ループ回数
-			string s;		// 列格納用
+			string line;		// 列格納用
 
 			// 列によって処理を分ける
-			while (getline(ifs, s)) {
-				istringstream stream(s);
+			while (getline(ifs, line)) {
+				istringstream stream(line);
 				string token;
 				vector<string> vStr;
 				for (int i = 0;getline(stream, token, ','); i++) {
@@ -164,12 +169,16 @@ void Player::InitPlayer(bool isContinue) {
 				else if (loop == 3) {
 					isFinish.resize(10);
 					for (int j = 0;j < 1000;++j) {
-						isFinish[(int)(j/100)].push_back(vStr[j%100] == "1" ? true : false);
+						isFinish[(int)(j/100)].push_back(vStr[j] == "1" ? true : false);
 					}
 				}
-				// 所持金	
+				// 所持金
 				else if (loop == 4) {
 					money = boost::lexical_cast<int>(vStr[0]);
+				}
+				// ユニットのモードデータ
+				else if (loop >= 5) {
+					Player::LoadTmpSave_UnitMode(line);
 				}
 
 				// カウントアップ
@@ -1538,10 +1547,65 @@ int Player::GetMoney() {
 	return money;
 }
 
+// 【一時セーブデータ】
+// ユニットのモードの一時セーブ
+void Player::TmpSave_UnitMode(int saveStage, const std::map<int, MapUnit*> unitData) {
+	if (tmpSave_unitMode.find(saveStage) == tmpSave_unitMode.end()) {
+		// 【セーブされたデータがない場合】
+		map<int, int> tmp;
+		tmpSave_unitMode[saveStage] = tmp;	// 追加
+	}
+	// データを追加（上書き）
+	for (auto itr = unitData.begin(), end = unitData.end(); itr != end; ++itr) {
+		tmpSave_unitMode[saveStage][itr->first] = itr->second->GetMode();
+	}
+}
+void Player::LoadTmpSave_UnitMode(string line) {
+	//ロード用変数
+	std::istringstream stream(line);
+	string token;
+
+	int tmp_mapID = 0;
+	int tmp_unitID = 0;
+	int tmp_modeNum = 0;
+
+	// 【マップID】
+	getline(stream, token, ',');
+	tmp_mapID = boost::lexical_cast<int>(token);
+	if (tmpSave_unitMode.find(tmp_mapID) == tmpSave_unitMode.end()) {
+		// 【セーブされたデータがない場合】
+		map<int, int> tmp;
+		tmpSave_unitMode[tmp_mapID] = tmp;	// 追加
+	}
+	// 【ID-モード】
+	while (getline(stream, token, ',')) {
+		if (token == "") break;
+		// 【ユニットID】
+		tmp_unitID = boost::lexical_cast<int>(token);
+		// 【モード】
+		getline(stream, token, ',');
+		tmp_modeNum = boost::lexical_cast<int>(token);
+		tmpSave_unitMode[tmp_mapID][tmp_unitID] = tmp_modeNum;
+	}
+}
+// ユニットのモードのセット
+bool Player::SetUnitMode_TmpSave(std::map<int, MapUnit*>& unitData) {
+	if (tmpSave_unitMode.find(stage) == tmpSave_unitMode.end()) {
+		//【セーブデータなし】
+		return false;
+	}
+	else{
+		// 【セーブされたデータがある場合】
+		for (auto itr = tmpSave_unitMode[stage].begin(), end = tmpSave_unitMode[stage].end(); itr != end; ++itr) {
+			unitData[itr->first]->SetMode(itr->second);
+		}
+	}
+	return true;
+}
 void Player::Save() {
 	// ---------------------------------------------------------
 	// ファイルオープン
-	ofstream ofs("savedata.txt");
+	ofstream ofs("savedata\\savedata.txt");
 	if (!ofs) {
 		// 初めてセーブするときに来る場所
 	}
@@ -1578,6 +1642,7 @@ void Player::Save() {
 		}
 	}
 	ofs << endl;
+
 	// フラグ
 	bool c = false;
 	for (int i = 0, n = 1000;i < n;++i){
@@ -1592,6 +1657,17 @@ void Player::Save() {
 	ofs << endl;
 	// 所持金
 	ofs << money << endl;
+
+	// ユニットのモードデータ
+	Game::TmpSave_UnitMode();	// 今いるマップのユニットをセーブ
+	for (auto itr = tmpSave_unitMode.begin(), end = tmpSave_unitMode.end(); itr != end; ++itr) {
+		// マップID
+		ofs << itr->first << ',';
+		for (auto itr_2 = itr->second.begin(), end_2 = itr->second.end(); itr_2 != end_2; ++itr_2) {
+			ofs << itr_2->first << ',' << itr_2->second << ',';
+		}
+		ofs << endl;
+	}
 
 	// ファイルクローズ
 	ofs.close();

@@ -64,13 +64,14 @@ public:
 	virtual void Draw() = 0;
 
 	void LoadUnitData();			// ユニットの配置データを読み込む
-	void LoadUnitMode();			// ユニットのモードデータのロード
-	void SaveUnitMode(int stage);	// ユニットのモードデータのセーブ
+	//void LoadUnitMode();			// ユニットのモードデータのロード
+	//void SaveUnitMode(int stage);	// ユニットのモードデータのセーブ
 	void SetUnitArea();				// ユニットの区画分け
 	void LaodChipToBack();			// マップチップとバトル画面の背景の連想配列を作成
 	static void Encounter(int encounterID, int back, int battleBGM);	// 通常戦闘開始
 	static void Encounter(int encounterID, int back, int battleBGM, bool escapeFlag, bool loseEventFlag, bool* battleFlag, eEndStatus* battleEndType);	// イベント戦闘開始
 	static void EncounterReset();	// エンカウンターのリセット
+	static void TmpSave_UnitMode();	// ユニットのモードの一時セーブ
 
 	static StageMode GetStageMode();		// 現在のモードを返す
 };

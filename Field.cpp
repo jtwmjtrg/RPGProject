@@ -390,13 +390,13 @@ void Field::Process(){
 				Player::character[i]->AutoIncMP_Field();
 			}
 			// 移動したらエンカウントまでの歩数を1減らす
-			--encCount;
+			//--encCount;
 		}
 
 		// セーブ時にユニットのモードもセーブする
-		if (Player::saveFlag) {
+		/*if (Player::saveFlag) {
 			SaveUnitMode(Player::stage);	// 現在いるマップのユニットのモードのセーブ
-		}
+		}*/
 
 		// 移動に対応してプレイヤーに位置の修正等を行う
 		for (int i = 0;i != 2;++i) {
@@ -618,6 +618,20 @@ void Field::Draw(){
 	/*for (int i = 0;i < Player::isFinish[Player::stage].size();++i) {
 		DrawString(WHITE, 0, i * 32, "%d", (int)Player::isFinish[Player::stage][i]);
 	}*/
+	/*{
+		if (Player::tmpSave_unitMode.find(Player::stage) == Player::tmpSave_unitMode.end()) {
+			//【セーブデータなし】
+			DrawString(WHITE, 0, 0, "なにもないヌル");
+		}
+		else {
+			int i = 0;
+			for (auto itr_2 = Player::tmpSave_unitMode[Player::stage].begin(), end_2 = Player::tmpSave_unitMode[Player::stage].end(); itr_2 != end_2; ++itr_2) {
+				DrawString(WHITE, 0, i * 32, "%d:%d", itr_2->first, itr_2->second);
+				i++;
+			}
+		}
+	}*/
+	
 
 	/*if (Player::stage == 2) {
 		for (int i = 0;i < eventData[2].size();++i) {
@@ -685,8 +699,10 @@ void Field::EventProcess(int id) {
 	}
 	else if (event_name == "APPEAR_UNIT") {
 		// Unit[id]を表示/非表示する
-
-		unitData[boost::lexical_cast<int>(event_data[eventHead + 1])]->SetAppearFlag((bool)std::stoi(event_data[eventHead + 2]));
+		// -----------------------------------
+		//  【使用変更につき無効化】
+		// -----------------------------------
+		//unitData[boost::lexical_cast<int>(event_data[eventHead + 1])]->ChangeStatus(event_data[eventHead + 2] == "1" ? eUnitStatus::Apear : eUnitStatus::Disapear);
 
 		eventHead += 3;
 	}

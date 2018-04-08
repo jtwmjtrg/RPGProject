@@ -8,26 +8,25 @@ void MapUnit_Action::SetActionNum(int* actionNum) {		// Às’†‚Ìs“®‚Ì—v‘f”Ô†‚Ì
 }
 // y“]ˆÚz
 MapUnit_Action_Warp::MapUnit_Action_Warp(string line) {
-	// y”z’uƒf[ƒ^“Ç‚İ‚İz
 	//ƒ[ƒh—p•Ï”
 	std::istringstream L_stream(line);
 	string L_token;
 
 	// 1yƒf[ƒ^‚Ìí—Şz”jŠü
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	// 2y‹““®‚Ìƒ^ƒCƒvz
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	// 3yƒ}ƒbƒvIDzæ“¾
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	this->mapId = boost::lexical_cast<int>(L_token);
 	// 3yXÀ•Wzæ“¾iƒ}ƒbƒvÀ•Wj
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	this->x = boost::lexical_cast<int>(L_token);
 	// 4yYÀ•Wzæ“¾iƒ}ƒbƒvÀ•Wj
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	this->y = boost::lexical_cast<int>(L_token);
 	// 5y“]ˆÚ‰‰ozæ“¾
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	this->effect = boost::lexical_cast<int>(L_token);
 }
 MapUnit_Action_Warp::~MapUnit_Action_Warp() {
@@ -50,19 +49,18 @@ eMUAReturn MapUnit_Action_Warp::Execution() {
 
 // yƒZƒŠƒtz
 MapUnit_Action_Talk::MapUnit_Action_Talk(string line) {
-	// y”z’uƒf[ƒ^“Ç‚İ‚İz
 	//ƒ[ƒh—p•Ï”
 	std::istringstream L_stream(line);
 	string L_token;
 
 	// 1yƒf[ƒ^‚Ìí—Şz”jŠü
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	// 2y‹““®‚Ìƒ^ƒCƒvz
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	// 3yƒZƒŠƒt“à—ezæ“¾
-	//getline(L_stream, L_token, ',');
+	//std::getline(L_stream, L_token, ',');
 	//boost::algorithm::split(str, L_token, boost::is_any_of("@"));
-	while (getline(L_stream, L_token, ',') ){
+	while (std::getline(L_stream, L_token, ',') ){
 		if (L_token == "") break;
 		this->str.push_back(L_token);
 	}
@@ -83,35 +81,34 @@ eMUAReturn MapUnit_Action_Talk::Execution() {
 
 // yí“¬z
 MapUnit_Action_Battle::MapUnit_Action_Battle(string line) {
-	// y”z’uƒf[ƒ^“Ç‚İ‚İz
 	//ƒ[ƒh—p•Ï”
 	std::istringstream L_stream(line);
 	string L_token;
 
 	// 1yƒf[ƒ^‚Ìí—Şz”jŠü
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	// 2y‹““®‚Ìƒ^ƒCƒvz
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	// 3yƒGƒ“ƒJƒEƒ“ƒgIDzæ“¾
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	encID = boost::lexical_cast<int>(L_token);
 	// 4y”wŒiIDzæ“¾
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	backID = boost::lexical_cast<int>(L_token);
 	// 5y“¦‘–‰Â”\ƒtƒ‰ƒOzæ“¾
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	escapeFlag = L_token == "1";
 	// 6y•‰‚¯ƒCƒxƒtƒ‰ƒOzæ“¾
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	loseEventFlag = L_token == "1";
 	// 7yŸ—˜‚Ì•ªŠòzæ“¾
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	branch[0] = boost::lexical_cast<int>(L_token);
 	// 8y‘S–Å‚Ì•ªŠòzæ“¾
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	branch[1] = boost::lexical_cast<int>(L_token);
 	// 9y“¦‘–‚Ì•ªŠòzæ“¾
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	branch[2] = boost::lexical_cast<int>(L_token);
 
 	// ‰Šú‰»
@@ -165,20 +162,19 @@ eMUAReturn MapUnit_Action_Battle::Execution() {
 
 // yƒ_ƒ[ƒWz
 MapUnit_Action_Damage::MapUnit_Action_Damage(string line) {
-	// y”z’uƒf[ƒ^“Ç‚İ‚İz
 	//ƒ[ƒh—p•Ï”
 	std::istringstream L_stream(line);
 	string L_token;
 
 	// 1yƒf[ƒ^‚Ìí—Şz”jŠü
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	// 2y‹““®‚Ìƒ^ƒCƒvz
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	// 3y‘ÎÛzæ“¾
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	target = boost::lexical_cast<int>(L_token);
 	// 4yƒ_ƒ[ƒW—Êzæ“¾
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	damage = boost::lexical_cast<int>(L_token);
 }
 MapUnit_Action_Damage::~MapUnit_Action_Damage() {
@@ -232,26 +228,25 @@ eMUAReturn MapUnit_Action_Damage::Execution() {
 
 // y‰ñ•œz
 MapUnit_Action_Recovery::MapUnit_Action_Recovery(string line) {
-	// y”z’uƒf[ƒ^“Ç‚İ‚İz
 	//ƒ[ƒh—p•Ï”
 	std::istringstream L_stream(line);
 	string L_token;
 
 	// 1yƒf[ƒ^‚Ìí—Şz”jŠü
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	// 2y‹““®‚Ìƒ^ƒCƒvz
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	// 3y‘ÎÛzæ“¾
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	target = boost::lexical_cast<int>(L_token);
 	// 4yHP‰ñ•œ—Êzæ“¾
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	heal_HP = boost::lexical_cast<int>(L_token);
 	// 5yMP‰ñ•œ—Êzæ“¾
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	heal_MP = boost::lexical_cast<int>(L_token);
 	// 6y‘h¶ƒtƒ‰ƒOzæ“¾
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	resurrection = L_token == "1";
 }
 MapUnit_Action_Recovery::~MapUnit_Action_Recovery() {
@@ -319,23 +314,22 @@ eMUAReturn MapUnit_Action_Recovery::Execution() {
 
 // yƒAƒCƒeƒ€æ“¾z
 MapUnit_Action_Item::MapUnit_Action_Item(string line) {
-	// y”z’uƒf[ƒ^“Ç‚İ‚İz
 	//ƒ[ƒh—p•Ï”
 	std::istringstream stream(line);
 	string token;
 
 	// 1yƒf[ƒ^‚Ìí—Şz”jŠü
-	getline(stream, token, ',');
+	std::getline(stream, token, ',');
 	// 2 y‹““®‚Ìƒ^ƒCƒvz
-	getline(stream, token, ',');
+	std::getline(stream, token, ',');
 	// 3 yæ“¾ƒAƒCƒeƒ€‚ÌIDzæ“¾
-	getline(stream, token, ',');
+	std::getline(stream, token, ',');
 	itemID = boost::lexical_cast<int>(token);
 	// 4 yƒAƒCƒeƒ€‚ğè‚É“ü‚ê‚½ê‡‚ÌƒWƒƒƒ“ƒvzæ“¾
-	getline(stream, token, ',');
+	std::getline(stream, token, ',');
 	jump_True = boost::lexical_cast<int>(token);
 	// 5y‚¿•¨‚ª‚¢‚Á‚Ï‚¢‚¾‚Á‚½ê‡‚ÌƒWƒƒƒ“ƒvzæ“¾
-	getline(stream, token, ',');
+	std::getline(stream, token, ',');
 	jump_False = boost::lexical_cast<int>(token);
 }
 MapUnit_Action_Item::~MapUnit_Action_Item() {
@@ -356,17 +350,16 @@ eMUAReturn MapUnit_Action_Item::Execution() {
 
 // y“Xz
 MapUnit_Action_Shop::MapUnit_Action_Shop(string line) {
-	// y”z’uƒf[ƒ^“Ç‚İ‚İz
 	//ƒ[ƒh—p•Ï”
 	std::istringstream L_stream(line);
 	string L_token;
 
 	// 1yƒf[ƒ^‚Ìí—Şz”jŠü
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	// 2y‹““®‚Ìƒ^ƒCƒvz
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	// 3y“XIDzæ“¾
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	shopID = L_token;
 }
 MapUnit_Action_Shop::~MapUnit_Action_Shop() {
@@ -381,23 +374,23 @@ eMUAReturn MapUnit_Action_Shop::Execution() {
 }
 
 // yÁ–Å-oŒ»z
+/*
 MapUnit_Action_Existence::MapUnit_Action_Existence(string line, bool& appearFlag) :
 	appearFlag(appearFlag)
 {
-	// y”z’uƒf[ƒ^“Ç‚İ‚İz
 	//ƒ[ƒh—p•Ï”
 	std::istringstream L_stream(line);
 	string L_token;
 
 	// 1yƒf[ƒ^‚Ìí—Şz”jŠü
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	// 2y‹““®‚Ìƒ^ƒCƒvz
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	// 3yƒtƒ‰ƒOzæ“¾
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	flag = L_token == "1";
 	// 4y‰‰ozæ“¾
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	staging = boost::lexical_cast<int>(L_token);
 }
 MapUnit_Action_Existence::~MapUnit_Action_Existence() {
@@ -409,23 +402,22 @@ eMUAReturn MapUnit_Action_Existence::Execution() {
 	++(*actionNum);		// Ÿ‚Ì‹““®‚Ö
 	return eMUAReturn::Next;	// ‚·‚®‚ÉŸ‚Ì‹““®‚É‚¤‚Â‚é
 }
-
+*/
 // yƒ‚[ƒh•ÏXz
 MapUnit_Action_ChangeMode::MapUnit_Action_ChangeMode(string line, int& nowMode, const vector<MapUnit_Mode*>& mode) :
 	nowMode(nowMode),
 	mode(mode)
 {
-	// y”z’uƒf[ƒ^“Ç‚İ‚İz
 	//ƒ[ƒh—p•Ï”
 	std::istringstream L_stream(line);
 	string L_token;
 
 	// 1yƒf[ƒ^‚Ìí—Şz”jŠü
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	// 2y‹““®‚Ìƒ^ƒCƒvz
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	// 3yƒ‚[ƒh”zæ“¾
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	modeNum = boost::lexical_cast<int>(L_token);
 }
 MapUnit_Action_ChangeMode::~MapUnit_Action_ChangeMode() {
@@ -449,11 +441,11 @@ MapUnit_Action_Message::MapUnit_Action_Message(string line) : MapUnit_Action() {
 	string L_token;
 
 	// 1yƒf[ƒ^‚Ìí—Şz”jŠü
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	// 2y‹““®‚Ìƒ^ƒCƒvz
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	// 3yƒƒbƒZ[ƒW”Ô†zæ“¾
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	messageNum = boost::lexical_cast<int>(L_token);
 }
 MapUnit_Action_Message::~MapUnit_Action_Message() {
@@ -466,25 +458,24 @@ eMUAReturn MapUnit_Action_Message::Execution() {
 
 // y‘I‘ğ•ªŠòz
 MapUnit_Action_SelectBranch::MapUnit_Action_SelectBranch(string line) {
-	// y”z’uƒf[ƒ^“Ç‚İ‚İz
 	//ƒ[ƒh—p•Ï”
 	std::istringstream L_stream(line);
 	string L_token;
 
 	// 1yƒf[ƒ^‚Ìí—Şz”jŠü
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	// 2y‹““®‚Ìƒ^ƒCƒvz
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	// 3y¿–â•¶zæ“¾
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	question = L_token;
 	// y‘I‘ğˆzæ“¾
-	while (getline(L_stream, L_token, ',')) {
+	while (std::getline(L_stream, L_token, ',')) {
 		if (L_token == "") break;
 		// y‘I‘ğˆ•¶zæ“¾
 		choices.push_back({ L_token, 1});
 		// y•ªŠòæzæ“¾
-		getline(L_stream, L_token, ',');
+		std::getline(L_stream, L_token, ',');
 		choices.back().destination = boost::lexical_cast<int>(L_token);
 	}
 
@@ -550,17 +541,16 @@ eMUAReturn MapUnit_Action_End::Execution() {
 
 // y‹““®”Ô†‚ÌˆÚ“®z
 MapUnit_Action_Goto::MapUnit_Action_Goto(string line) {
-	// y”z’uƒf[ƒ^“Ç‚İ‚İz
 	//ƒ[ƒh—p•Ï”
 	std::istringstream L_stream(line);
 	string L_token;
 
 	// 1yƒf[ƒ^‚Ìí—Şz”jŠü
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	// 2y‹““®‚Ìƒ^ƒCƒvz
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	// 3y¿–â•¶zæ“¾
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	moveNum = boost::lexical_cast<int>(L_token);
 }
 MapUnit_Action_Goto::~MapUnit_Action_Goto() {
@@ -597,23 +587,22 @@ eMUAReturn MapUnit_Action_GameClear::Execution() {
 
 // y‹à‚ğ•¥‚¤z
 MapUnit_Action_PayMoney::MapUnit_Action_PayMoney(string line) {
-	// y”z’uƒf[ƒ^“Ç‚İ‚İz
 	//ƒ[ƒh—p•Ï”
 	std::istringstream stream(line);
 	string token;
 
 	// 1yƒf[ƒ^‚Ìí—Şz”jŠü
-	getline(stream, token, ',');
+	std::getline(stream, token, ',');
 	// 2y‹““®‚Ìƒ^ƒCƒvz
-	getline(stream, token, ',');
+	std::getline(stream, token, ',');
 	// 3y•¥‚¤‹àŠzzæ“¾
-	getline(stream, token, ',');
+	std::getline(stream, token, ',');
 	price = boost::lexical_cast<int>(token);
 	// 4y‹à‚ª‘«‚è‚½ê‡‚ÌƒWƒƒƒ“ƒvzæ“¾
-	getline(stream, token, ',');
+	std::getline(stream, token, ',');
 	jump_True = boost::lexical_cast<int>(token);
 	// 5y‹à‚ª‘«‚è‚È‚©‚Á‚½ê‡‚ÌƒWƒƒƒ“ƒvzæ“¾
-	getline(stream, token, ',');
+	std::getline(stream, token, ',');
 	jump_False = boost::lexical_cast<int>(token);
 }
 MapUnit_Action_PayMoney::~MapUnit_Action_PayMoney() {
@@ -721,17 +710,16 @@ bool MapUnit_If_Touch::ChackIf() {
 MapUnit_If_Message::MapUnit_If_Message(string line) {
 	ifType = eUnit_If::Message;	// ğŒ‚Ìí—Ş
 
-	// y”z’uƒf[ƒ^“Ç‚İ‚İz
 	//ƒ[ƒh—p•Ï”
 	std::istringstream L_stream(line);
 	string L_token;
 
 	// 1yƒf[ƒ^‚Ìí—Şz”jŠü
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	// 2y‹““®‚Ìƒ^ƒCƒvz
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	// 3yƒƒbƒZ[ƒW”Ô†zæ“¾
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	messageNum = boost::lexical_cast<int>(L_token);
 }
 MapUnit_If_Message::~MapUnit_If_Message() {
@@ -767,20 +755,19 @@ MapUnit_If_Distance::MapUnit_If_Distance(string line, const int& x, const int& y
 {
 	ifType = eUnit_If::Distance;	// ğŒ‚Ìí—Ş
 
-	// y”z’uƒf[ƒ^“Ç‚İ‚İz
 	//ƒ[ƒh—p•Ï”
 	std::istringstream L_stream(line);
 	string L_token;
 
 	// 1yƒf[ƒ^‚Ìí—Şz”jŠü
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	// 2y‹““®‚Ìƒ^ƒCƒvz
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	// 3y‹——£i”¼Œajzæ“¾
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	distance = boost::lexical_cast<int>(L_token);
 	// 3y‹ß‚Ã‚­/—£‚ê‚ézæ“¾
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	In_Out = L_token == "1";
 }
 MapUnit_If_Distance::~MapUnit_If_Distance() {
@@ -842,20 +829,19 @@ void MapUnit_Move_None::Move() {
 MapUnit_Move_Random::MapUnit_Move_Random(string line, int& x, int& y, Direction& dir) :
 	MapUnit_Move(x, y, dir)
 {
-	// y”z’uƒf[ƒ^“Ç‚İ‚İz
 	//ƒ[ƒh—p•Ï”
 	std::istringstream L_stream(line);
 	string L_token;
 
 	// 1yƒf[ƒ^‚Ìí—Şz”jŠü
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	// 2yˆÚ“®‚Ìí—Şz
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	// 3yˆÚ“®‘¬“xzæ“¾
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	speed = boost::lexical_cast<int>(L_token);
 	// 4yˆÚ“®‚²‚Æ‚Ìdelayzæ“¾
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	delay = boost::lexical_cast<int>(L_token);
 
 	iniX = x;
@@ -944,7 +930,10 @@ void MapUnit_Move_Random::Move() {
 
 /*-------------------------------------------------ƒ†ƒjƒbƒg‚Ìƒ‚[ƒh--------------------------------------------*/
 // yƒX[ƒp[ƒNƒ‰ƒXz
-MapUnit_Mode::MapUnit_Mode() {
+MapUnit_Mode::MapUnit_Mode(const bool collisionFlag, const bool appearFlag) :
+	collisionFlag(collisionFlag),
+	appearFlag(appearFlag)
+{
 	move = nullptr;
 	termNum = 0;
 }
@@ -1002,10 +991,10 @@ void MapUnit_Mode::EndProcess() {
 }
 
 // yğŒ‚È‚µz
-MapUnit_Mode_None::MapUnit_Mode_None(int modeNum, int& nowMode) :
+MapUnit_Mode_None::MapUnit_Mode_None(int modeNum, int& nowMode, const bool collisionFlag, const bool appearFlag) :
 	modeNum(modeNum),
 	nowMode(nowMode),
-	MapUnit_Mode()
+	MapUnit_Mode(collisionFlag, appearFlag)
 {
 	type = eUnitMode::None;
 }
@@ -1017,23 +1006,25 @@ bool MapUnit_Mode_None::ModeCheck() {
 }
 
 // yƒXƒg[ƒŠ[is“xz
-MapUnit_Mode_Chapter::MapUnit_Mode_Chapter(string line) {
+MapUnit_Mode_Chapter::MapUnit_Mode_Chapter(string line, const bool collisionFlag, const bool appearFlag) :
+	MapUnit_Mode(collisionFlag, appearFlag)
+{
 	type = eUnitMode::None;
 	//ƒ[ƒh—p•Ï”
 	std::istringstream L_stream(line);
 	string L_token;
 
 	// 1yƒf[ƒ^‚Ìí—Şz”jŠü
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	// 2yƒ‚[ƒh”z”jŠü
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	// 3yˆÚsğŒz”jŠü
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	// 4yŠî€‚Ìis“xz
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	chapter = boost::lexical_cast<int>(L_token);
 	// 5yğŒz
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	term = boost::lexical_cast<int>(L_token);
 
 }
@@ -1054,6 +1045,42 @@ bool MapUnit_Mode_Chapter::ModeCheck() {
 		return false;
 		break;
 	}
+}
+
+// yƒCƒxƒ“ƒgƒtƒ‰ƒOz
+MapUnit_Mode_EventFlag::MapUnit_Mode_EventFlag(string line, const bool collisionFlag, const bool appearFlag) :
+	MapUnit_Mode(collisionFlag, appearFlag)
+{
+	type = eUnitMode::None;
+	//ƒ[ƒh—p•Ï”
+	std::istringstream L_stream(line);
+	string L_token;
+
+	// 1yƒf[ƒ^‚Ìí—Şz”jŠü
+	std::getline(L_stream, L_token, ',');
+	// 2yƒ‚[ƒh”z”jŠü
+	std::getline(L_stream, L_token, ',');
+	// 3y“–‚½‚è”»’èƒtƒ‰ƒOz”jŠü
+	std::getline(L_stream, L_token, ',');
+	// 4yoŒ»ƒtƒ‰ƒOz”jŠü
+	std::getline(L_stream, L_token, ',');
+	// 4yˆÚsğŒz”jŠü
+	std::getline(L_stream, L_token, ',');
+	// 5yƒ}ƒbƒvIDz
+	std::getline(L_stream, L_token, ',');
+	stageID = boost::lexical_cast<int>(L_token);
+	// 6yƒCƒxƒ“ƒgIDz
+	std::getline(L_stream, L_token, ',');
+	eventID = boost::lexical_cast<int>(L_token);
+	// 7yƒtƒ‰ƒOz
+	std::getline(L_stream, L_token, ',');
+	Flag = L_token == "1";
+}
+MapUnit_Mode_EventFlag::~MapUnit_Mode_EventFlag() {
+
+}
+bool MapUnit_Mode_EventFlag::ModeCheck() {
+	return Player::isFinish[stageID][eventID] == Flag;
 }
 /*-------------------------------------------------ƒ†ƒjƒbƒgƒf[ƒ^--------------------------------------------*/
 // ƒƒbƒZ[ƒWŠÖ˜A
@@ -1096,8 +1123,6 @@ void MapObject::MessageUpDate() {
 
 MapUnit::MapUnit(string line) {
 	// ‰Šú‰»
-	collisionFlag	= true;
-	appearFlag		= true;
 	execFlag		= false;	// s“®Às’†ƒtƒ‰ƒO
 	nowMode			= 0;
 	areaX			= 0;
@@ -1105,25 +1130,24 @@ MapUnit::MapUnit(string line) {
 	count			= 0;
 	dir				= DOWN;
 
-	// y”z’uƒf[ƒ^“Ç‚İ‚İz
 	//ƒ[ƒh—p•Ï”
 	istringstream L_stream(line);
 	string L_token;
 	
 	// 1yƒ†ƒjƒbƒgIDz
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	id = boost::lexical_cast<int>(L_token);
 	// 2y–¼‘Ozæ“¾
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	name = L_token;
 	// 3yXÀ•Wzæ“¾iƒ}ƒbƒvÀ•Wj
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	initX = x = boost::lexical_cast<int>(L_token) * CHIPSIZE;
 	// 4yYÀ•Wzæ“¾iƒ}ƒbƒvÀ•Wj
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	initY = y = boost::lexical_cast<int>(L_token) * CHIPSIZE;
 	// 5y‰æ‘œzæ“¾
-	getline(L_stream, L_token, ',');
+	std::getline(L_stream, L_token, ',');
 	if (L_token == "0") {
 		L_token = "null";
 	}
@@ -1133,14 +1157,14 @@ MapUnit::MapUnit(string line) {
 	img = LoadGraph(cstr, 4, 4);
 	delete cstr;	// ƒƒ‚ƒŠ‰ğ•ú	
 	// 6y“–‚½‚è”»’èzæ“¾
-	getline(L_stream, L_token, ',');
-	collisionFlag = L_token == "1";
+	//std::getline(L_stream, L_token, ',');
+	//collisionFlag = L_token == "1";
 	// 7yoŒ»ƒtƒ‰ƒOzæ“¾
-	getline(L_stream, L_token, ',');
-	appearFlag = L_token == "1";
+	//std::getline(L_stream, L_token, ',');
+	//appearFlag = L_token == "1";
 	// 8yŒ»İ‚Ìƒ‚[ƒh”zæ“¾
-	getline(L_stream, L_token, ',');
-	nowMode = boost::lexical_cast<int>(L_token);
+	//std::getline(L_stream, L_token, ',');
+	//nowMode = boost::lexical_cast<int>(L_token);
 
 	LoadData();		// ƒf[ƒ^‚Ìƒ[ƒh
 }
@@ -1154,6 +1178,9 @@ void MapUnit::LoadData() {
 
 	int L_Mode;		// “Ç‚İ‚İ‚Ìƒ‚[ƒhw’è
 
+	bool tmp_appFlag = true;
+	bool tmp_colFlag = true;
+
 	// “Ç‚İ‚Şƒtƒ@ƒCƒ‹‚Ìw’è
 	L_File.open("unitdata\\" + to_string(Player::stage) + "\\data\\" + to_string(id) + ".csv", ios::in);	// ƒtƒ@ƒCƒ‹ƒI[ƒvƒ“
 
@@ -1162,28 +1189,41 @@ void MapUnit::LoadData() {
 	}
 	else {
 
-		while (getline(L_File, L_Line)) {	// ˆês‚¸‚Â“Ç‚İ‚İ
+		while (std::getline(L_File, L_Line)) {	// ˆês‚¸‚Â“Ç‚İ‚İ
 			// “Ç‚İ‚ñ‚¾s‚ğƒRƒs[
 			std::istringstream L_stream(L_Line);
 			// 1—ñ–Ú‚ğƒ[ƒh‚µ‚Ä”»’è
-			getline(L_stream, L_token, ',');
+			std::getline(L_stream, L_token, ',');
 
 			switch (boost::lexical_cast<int>(L_token)){
 			case 0:	// yƒ‚[ƒhz
 			{
 				// 2yƒ‚[ƒh”z
-				getline(L_stream, L_token, ',');
+				std::getline(L_stream, L_token, ',');
 				L_Mode = boost::lexical_cast<int>(L_token);
 				// ƒ‚[ƒh”‚ª­‚È‚¯‚ê‚Î
 				if ((unsigned)L_Mode >= mode.size()) {
 					// ƒ‚[ƒh”‚ğ‘‚â‚·
 					mode.resize(L_Mode + 1);
 				}
-				// 3yğŒIDz”»’è
-				getline(L_stream, L_token, ',');
+				// 3y“–‚½‚è”»’èzæ“¾
+				std::getline(L_stream, L_token, ',');
+				tmp_colFlag = L_token == "1";
+				// 4yoŒ»ƒtƒ‰ƒOzæ“¾
+				std::getline(L_stream, L_token, ',');
+				tmp_appFlag = L_token == "1";
+
+				// 5yğŒIDz”»’è
+				std::getline(L_stream, L_token, ',');
 				switch (static_cast<eUnitMode>(boost::lexical_cast<int>(L_token))){
 				case eUnitMode::None:// yğŒ‚È‚µz
-					mode[L_Mode] = new MapUnit_Mode_None(L_Mode, nowMode);
+					mode[L_Mode] = new MapUnit_Mode_None(L_Mode, nowMode, tmp_colFlag, tmp_appFlag);
+					break;
+				case eUnitMode::Chapter:
+					mode[L_Mode] = new MapUnit_Mode_Chapter(L_Line, tmp_colFlag, tmp_appFlag);
+					break;
+				case eUnitMode::EventFlag:
+					mode[L_Mode] = new MapUnit_Mode_EventFlag(L_Line, tmp_colFlag, tmp_appFlag);
 					break;
 				default:
 					break;
@@ -1192,7 +1232,7 @@ void MapUnit::LoadData() {
 			}
 			case 1:	// yˆÚ“®z
 				// 2yˆÚ“®ƒ^ƒCƒvz”»’è
-				getline(L_stream, L_token, ',');
+				std::getline(L_stream, L_token, ',');
 				switch (boost::lexical_cast<int>(L_token)){
 				case 0:	// y“®‚©‚È‚¢z
 					mode[L_Mode]->SetMove(new MapUnit_Move_None(x, y, dir));
@@ -1210,7 +1250,7 @@ void MapUnit::LoadData() {
 				break;
 			case 2:	// y‹““®‚ÌÀsğŒz
 				// 2yğŒƒ^ƒCƒvz”»’è
-				getline(L_stream, L_token, ',');
+				std::getline(L_stream, L_token, ',');
 				switch ((eUnit_If)boost::lexical_cast<int>(L_token)){
 				case eUnit_If::Talk:	// y˜b‚µ‚©‚¯‚éz
 					mode[L_Mode]->AddTerm(new MapUnit_If_Talk(L_Line, x, y));
@@ -1231,7 +1271,7 @@ void MapUnit::LoadData() {
 				break;
 			case 3:	// y‹““®z
 				// 2y‹““®ƒ^ƒCƒvz”»’è
-				getline(L_stream, L_token, ',');
+				std::getline(L_stream, L_token, ',');
 				switch (static_cast<eUnit_Act>(boost::lexical_cast<int>(L_token))) {
 				case eUnit_Act::Warp:// y“]ˆÚz
 					mode[L_Mode]->AddAction(new MapUnit_Action_Warp(L_Line));
@@ -1254,8 +1294,10 @@ void MapUnit::LoadData() {
 				case eUnit_Act::Shop:// y“Xz
 					mode[L_Mode]->AddAction(new MapUnit_Action_Shop(L_Line));
 					break;
+					/*
 				case eUnit_Act::Existence:	// yÁ–Å-oŒ»z
 					mode[L_Mode]->AddAction(new MapUnit_Action_Existence(L_Line, appearFlag));
+					*/
 					break;
 				case eUnit_Act::ChangeMode:// yƒ‚[ƒh•ÏXz
 					mode[L_Mode]->AddAction(new MapUnit_Action_ChangeMode(L_Line, nowMode, mode));
@@ -1288,7 +1330,6 @@ void MapUnit::LoadData() {
 			}
 		}
 	}
-
 	// ƒtƒ@ƒCƒ‹‚ğ•Â‚¶‚é
 	L_File.close();
 
@@ -1299,16 +1340,17 @@ MapUnit::~MapUnit() {
 
 // –ˆƒtƒŒ[ƒ€‚Ìˆ—
 bool MapUnit::Process() {
-	// oŒ»‚Ì‚İ
-	if (appearFlag) {
-		
-		// ƒ‚[ƒh‚ÌğŒ‘S”»’è
-		for (int i = 0, n = mode.size(); i < n; ++i) {
-			if (mode[i]->ModeCheck()) {
-				nowMode = i;
-				break;
-			}
+	// ƒ‚[ƒh‚ÌğŒ‘S”»’è
+	for (int i = 0, n = mode.size(); i < n; ++i) {
+		if (mode[i]->ModeCheck()) {
+			// ƒ‚[ƒh•ÏX
+			nowMode = i;
+			break;
 		}
+	}
+
+	// oŒ»‚Ì‚İ
+	if (mode[nowMode]->GetAppearFlag()) {
 		// ˆÚ“®
 		mode[nowMode]->Move();
 		// s“®ğŒ”»’è
@@ -1323,7 +1365,7 @@ bool MapUnit::Process() {
 
 // •`‰æ
 void MapUnit::Draw(int cameraX, int cameraY) {
-	if (!appearFlag) return;
+	if (!mode[nowMode]->GetAppearFlag()) return;
 	int drawX = x - cameraX;
 	int drawY = y - cameraY;
 	if (drawX >= -64 && drawX <= 1920 && drawY >= -64 && drawY <= 1920) {
@@ -1342,6 +1384,7 @@ bool MapUnit::ActionExecution() {
 }
 
 // ƒ†ƒjƒbƒg‚Ìó‘Ô‚Ì•ÏX
+/*
 void MapObject::ChangeStatus(eUnitStatus type) {
 	switch (type){
 	case eUnitStatus::Apear:	// yoŒ»z
@@ -1360,14 +1403,15 @@ void MapObject::ChangeStatus(eUnitStatus type) {
 		break;
 	}
 }
+*/
 // ˆÚ“®•ûŒü
 void MapObject::SetDir(Direction dir) {
 	this->dir = dir;
 }
 bool MapObject::CheckColl(int x, int y) {
 	// “–‚½‚è”»’è‚ ‚è & oŒ»’†‚Ì‚İ
-	if (appearFlag) {
-		if (collisionFlag) {
+	if (GetAppearFlag()) {
+		if (GetCollisionFlag()) {
 			if (abs(this->x - x) <= (CHIPSIZE - 1) && abs(this->y - y) <= (CHIPSIZE - 1)) {
 				return true;
 			}
@@ -1409,4 +1453,14 @@ int MapUnit::GetMode() {
 void MapUnit::SetArea(int areaX, int areaY) {
 	this->areaX = areaX;
 	this->areaY = areaY;
+}
+
+// yƒQƒbƒ^[z
+// oŒ»ƒtƒ‰ƒO
+bool MapUnit::GetAppearFlag() {
+	return mode[nowMode]->GetAppearFlag();
+}
+// “–‚½‚è”»’è
+bool MapUnit::GetCollisionFlag() {
+	return mode[nowMode]->GetCollisionFlag();
 }

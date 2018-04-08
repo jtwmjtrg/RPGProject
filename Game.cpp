@@ -52,8 +52,9 @@ void Game::LaodChipToBack() {
 
 // ユニットの配置データを読み込む
 void Game::LoadUnitData() {
-	SaveUnitMode(playerPreStage);	// 直前にいたマップのユニットのモードのセーブ
-	Player::Save();					// プレイデータのオートセーブ
+	//SaveUnitMode(playerPreStage);	// 直前にいたマップのユニットのモードのセーブ
+	if(!unitData.empty()) Player::TmpSave_UnitMode(playerPreStage, unitData);
+	//Player::Save();					// プレイデータのオートセーブ
 	// メモリ解放
 	for (auto itr = unitData.begin(), end = unitData.end(); itr != end; itr++) {
 		itr->second->EndProcess();			// 終了処理
@@ -66,26 +67,32 @@ void Game::LoadUnitData() {
 
 	ifstream ifs("unitdata\\" + to_string(Player::stage) + "\\PutUnit.csv", ios::in);
 	if (!ifs) {
+		// 読み込み失敗
 		return;
 	}
+	else {
+		// 読み込み成功
+		string line;
+		string token;
 
-	string str;
-	string token;
-
-	while (getline(ifs, str)) {
-		std::istringstream stream(str);
-		getline(stream, token, ',');
-		unitData[boost::lexical_cast<int>(token)] = new MapUnit(str);
-	}
+		while (getline(ifs, line)) {
+			std::istringstream stream(line);
+			getline(stream, token, ',');
+			unitData[boost::lexical_cast<int>(token)] = new MapUnit(line);
+		}
+	}	
 
 	ifs.close();	// ファイルクローズ
 
-	LoadUnitMode();	// ユニットのモードデータのロード
+	// ユニットのモードデータのロード
+	Player::SetUnitMode_TmpSave(unitData);
 
 	SetUnitArea();	// ユニットの区画分け
 }
 // ユニットのモードデータのロード
+/*
 void Game::LoadUnitMode() {
+	
 	ifstream ifs("unitdata\\" + to_string(Player::stage) + "\\SaveMode.csv", ios::in);
 	
 	if (ifs.fail()) {	// ファイル読み込み
@@ -114,16 +121,22 @@ void Game::LoadUnitMode() {
 		}
 	}
 	ifs.close();
+	
 }
+*/
 // ユニットのモードデータのセーブ
+/*
 void Game::SaveUnitMode(int stage) {
+	
 	// ファイルオープン
 	ofstream ofs("unitdata\\" + to_string(stage) + "\\SaveMode.csv");
 	for (auto itr = unitData.begin(), end = unitData.end(); itr != end; ++itr) {
 		ofs << itr->first << ',' << itr->second->GetMode() << endl;		// ID, モード
 	}
 	ofs.close();
+	
 }
+*/
 // ユニットの区画分け
 void Game::SetUnitArea() {
 	for (int i = 0, n = (int)unitArea.size(); i < n; ++i) {
@@ -206,4 +219,8 @@ void Game::EncounterReset() {
 	encounter.loseEventFlag = false;	// 負けイベフラグ
 	encounter.battleFlag = NULL;		// 戦闘中フラグ（受け渡し用）
 	encounter.battleEndType = NULL;		// 戦闘終了の状態（受け渡し用）
+}
+
+void Game::TmpSave_UnitMode(){
+	Player::TmpSave_UnitMode(Player::stage, unitData);
 }

@@ -1599,8 +1599,8 @@ void PlayerChara::AutoIncMP_Field() {
 // スキルポイントの消費
 bool PlayerChara::DecSkillPoint(int point) {
 	// 消費が0未満 or 消費量がスキルポイントを超える場合　は認めない
-	if (point < 0 || (signed)skillPoint < point) return false;
-	
+	if (point < 0 || (signed)skillPoint < point) return false;	
+
 	skillPoint -= point;
 	return true;
 }

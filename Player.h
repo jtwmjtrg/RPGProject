@@ -127,6 +127,7 @@ typedef enum ePlayerMenu {
 }PlayerMenu;
 
 class Item;
+class MapUnit;
 
 class Player	// 静的クラス
 {
@@ -143,12 +144,14 @@ private:
 	// ステータス
 	static int speed;	// 移動スピード※２の冪乗にすること
 	static int money;	// 所持金
+	
+	// 一時セーブデータ
+	static map<int, map<int, int>> tmpSave_unitMode;	// ユニットのモード	<マップID <ユニットID , モード>>
 
 	// メインループ
 	static void MenuProcess();	// メニュー画面の処理
 
 	// 条件等で呼ばれる関数
-
 	static void UseItem(Item* item);	// アイテ使用時に呼ばれる
 
 	static int		menuY;
@@ -187,7 +190,7 @@ public:
 	static ItemBox	decideMenu;	// 確認メニュー
 
 	static int playerGraph;	// 本体の画像
-
+	
 	// 生成チェック
 	static bool born;
 
@@ -229,6 +232,11 @@ public:
 	static void AddMoney(int value);	// 金を手に入れる
 	static void PayMoney(int value);	// 金を払う
 	static int GetMoney();				// 金のゲッター
+
+	// 一時セーブデータ
+	static void LoadTmpSave_UnitMode(string line);								// ユニットのモードのロード
+	static void TmpSave_UnitMode(int saveStage, const std::map<int, MapUnit*> unitData);		// ユニットのモードの一時セーブ
+	static bool SetUnitMode_TmpSave(std::map<int, MapUnit*>& unitData);	// ユニットのモードのセット
 
 	static vector<vector<bool> > isFinish;
 };

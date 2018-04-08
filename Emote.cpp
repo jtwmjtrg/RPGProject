@@ -69,7 +69,6 @@ void Emote::Process() {
 		}
 		else {
 			// 更新
-
 			playing_emote_[i].count_++;	// カウントを進める
 		}
 	}
@@ -120,7 +119,7 @@ int Emote::GetEmoteSize() {
 	return playing_emote_.size();
 }
 int Emote::GetEmoteId(int i) {
-	if (i >= playing_emote_.size()) {
+	if (i >= (int)playing_emote_.size()) {
 		return -1;
 	}
 

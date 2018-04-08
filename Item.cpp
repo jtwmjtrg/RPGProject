@@ -80,7 +80,7 @@ bool	Item::GetIsCunsumption() {
 Item* Item::Factory(int id) {
 	Item* ip = nullptr;	// 複数回リターン書くのを回避
 
-	if (data.size() <= id) {
+	if ((int)data.size() <= id) {
 		// 存在しないアイテム
 
 		return ip;

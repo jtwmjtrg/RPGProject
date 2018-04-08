@@ -1,8 +1,5 @@
-﻿  Skill.cpp
-  Field.cpp
-c:\users\jtwmjtrg\desktop\roleplayinggame\rpgproject\field.cpp(5): warning C4356: 'Game::mapData': 静的データ メンバーは派生クラスを使って初期化できません。
-c:\users\jtwmjtrg\desktop\roleplayinggame\rpgproject\field.cpp(689): warning C4800: 'int': ブール値を 'true' または 'false' に強制的に設定します (警告の処理)
-c:\users\jtwmjtrg\desktop\roleplayinggame\rpgproject\field.cpp(782): warning C4800: 'int': ブール値を 'true' または 'false' に強制的に設定します (警告の処理)
-c:\users\jtwmjtrg\desktop\roleplayinggame\rpgproject\field.cpp(785): warning C4800: 'int': ブール値を 'true' または 'false' に強制的に設定します (警告の処理)
-  コードを生成中...
-  easy.vcxproj -> C:\Users\jtwmjtrg\Desktop\RolePlayingGame\RPGproject\Debug\easy.exe
+﻿  Field.cpp
+c:\users\jtwmjtrg\desktop\rpgproject_github\rpgproject\field.cpp(5): warning C4356: 'Game::mapData': 静的データ メンバーは派生クラスを使って初期化できません。
+c:\users\jtwmjtrg\desktop\rpgproject_github\rpgproject\field.cpp(798): warning C4800: 'int': ブール値を 'true' または 'false' に強制的に設定します (警告の処理)
+c:\users\jtwmjtrg\desktop\rpgproject_github\rpgproject\field.cpp(801): warning C4800: 'int': ブール値を 'true' または 'false' に強制的に設定します (警告の処理)
+  easy.vcxproj -> C:\Users\jtwmjtrg\Desktop\RPGProject_Github\RPGProject\Debug\easy.exe

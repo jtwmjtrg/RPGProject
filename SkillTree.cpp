@@ -34,7 +34,7 @@ SkillTree::SkillTree() {
 }
 
 SkillTree::~SkillTree() {
-	SaveData();		// スキルツリーのセーブ
+	//SaveData();		// スキルツリーのセーブ
 
 	chara = nullptr;	// キャラクタのポインタを切る
 
@@ -820,9 +820,9 @@ void Effect_Cube::InitStatus() {
 			}
 		}
 		if (i < 3) {
-			thetaX[i] = GetRand(-3, 3) * M_PI / 180;
-			thetaY[i] = GetRand(-3, 3) * M_PI / 180;
-			thetaZ[i] = GetRand(-3, 3) * M_PI / 180;
+			thetaX[i] = GetRand(-3, 3) * M_PI / 180.0f;
+			thetaY[i] = GetRand(-3, 3) * M_PI / 180.0f;
+			thetaZ[i] = GetRand(-3, 3) * M_PI / 180.0f;
 		}
 		else {
 			thetaX[i] = thetaX[i % 3];
